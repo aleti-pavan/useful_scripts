@@ -7,4 +7,4 @@ enabled=1' | tee  /etc/yum.repos.d/nginx.repo
 
 yum -y install nginx
 systemctl start nginx
-echo "<h1>Welcome to Automation Logic, Good luck with your Test</h1>" | tee /usr/share/nginx/html/index.html
+echo "<h1>Welcome to DevOps Classes, Keep Learning</h1>" | tee /usr/share/nginx/html/index.html
