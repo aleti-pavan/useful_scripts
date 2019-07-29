@@ -72,7 +72,7 @@ then
   sudo systemctl start jenkins
   sudo systemctl enable jenkins
 else
-    sudo service jenkins start
+  sudo service jenkins start
 fi
 
 # Jenkins runs on port 8080 by default. Let's make sure port 8080 is open:
@@ -90,26 +90,6 @@ fi
 # Let's make sure that git is installed since Jenkins will need this
 sudo yum install -y git
 
-# Install phpDox, which is needed by Jenkins.
-# https://github.com/theseer/phpdox
-sudo wget -N http://phpdox.de/releases/phpdox.phar
-sudo chmod +x phpdox.phar
-sudo mv phpdox.phar /usr/bin/phpdox
-
-
-# Install 'composer':
-sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/bin --filename=composer
-
-# Now that composer is installed, let's install PHPUnit and its associated packages:
-sudo composer global require "phpunit/phpunit=4.3.*"
-sudo composer global require "phpunit/php-invoker"
-sudo composer global require "phpunit/dbunit": ">=1.2"
-sudo composer global require "phpunit/phpunit-selenium": ">=1.2"
-
-# PHP CodeSniffer:
-sudo composer global require "squizlabs/php_codesniffer"
-
-sudo composer update
 
 # We need to increase the memory limit used by PHP:
 sudo sed -i 's/memory_limit = 128M/memory_limit = 2048M/g' /etc/php.ini
