@@ -1,0 +1,14 @@
+```
+gh auth login --hostname <hostname of github>
+gh repo list  - for list of repos
+gh repo list <org> - list of repos within organization
+
+```
+
+To download all repos 
+
+`for i in `gh repo list | awk '{ print $1}'`; do gh repo clone $i; done `
+ 
+To download all repos within a org and -L is for no. of repos, by default gh only displays 30 repos
+
+`for i in `gh repo list <org_name> -L <number of repos> | awk '{ print $1}'`; do gh repo clone $i; done `
